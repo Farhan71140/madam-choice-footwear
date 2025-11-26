@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Contact Us</h2>
+
+<p><strong>Call us:</strong> 📞 9133028638 / 9395550002</p>
+<p><strong>Email us:</strong> ✉️ 
+  <a href="mailto:farhanuddin0516@gmail.com">farhanuddin0516@gmail.com</a>
+</p>
+<p><strong>Visit us:</strong> # B-13, Palika Bazar, Station Road, Secunderabad – 500 003</p>
+
+{% if success %}
+<div class="alert alert-success">Thank you! Your message has been received.</div>
+{% endif %}
+
+<form method="POST" action="/contact">
+  <div class="mb-3">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Email</label>
+    <input type="email" name="email" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Message</label>
+    <textarea name="message" class="form-control" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Send</button>
+  <a href="mailto:farhanuddin0516@gmail.com" class="btn btn-outline-info ms-2">✉️ Email directly</a>
+  <a href="https://wa.me/919133028638" class="btn btn-success ms-2">💬 WhatsApp</a>
+</form>
+{% endblock %}
