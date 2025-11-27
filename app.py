@@ -2,6 +2,8 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+import smtplib
+from email.message import EmailMessage
 
 app = FastAPI()
 
@@ -22,7 +24,7 @@ async def about(request: Request):
 
 @app.get("/contact", response_class=HTMLResponse)
 async def contact(request: Request):
-    return templates.TemplateResponse("contact.html", {"request": request}) 
+    return templates.TemplateResponse("contact.html", {"request": request})
 
 @app.get("/privacy-policy", response_class=HTMLResponse)
 def privacy_policy(request: Request):
@@ -44,7 +46,37 @@ def heels(request: Request):
 def wedges(request: Request):
     return templates.TemplateResponse("wedges.html", {"request": request})
 
-
 @app.post("/contact", response_class=HTMLResponse)
-async def contact_form(request: Request, name: str = Form(...), email: str = Form(...), message: str = Form(...)):
-    return templates.TemplateResponse("contact.html", {"request": request, "success": True})
+async def contact_form(
+    request: Request,
+    name: str = Form(...),
+    email: str = Form(...),
+    message: str = Form(...)
+):
+    gmail_user = "farhanuddin0516@gmail.com"   # your Gmail address
+    gmail_app_password = "zlxq qxcp jgmz rpdg"  # replace later
+
+    # Build the email
+    msg = EmailMessage()
+    msg["Subject"] = "New Contact Form Submission - Madam Choice"
+    msg["From"] = gmail_user
+    msg["To"] = "farhanuddin0516@gmail.com"   # receive at your inbox
+    msg.set_content(
+        f"New message from Madam Choice Contact Form:\n\n"
+        f"Name: {name}\n"
+        f"Email: {email}\n"
+        f"Message:\n{message}\n"
+    )
+
+    # Send via Gmail SMTP
+    try:
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls()
+            server.login(gmail_user, gmail_app_password)
+            server.send_message(msg)
+        success = True
+    except Exception as e:
+        print("Email sending failed:", e)
+        success = False
+
+    return templates.TemplateResponse("contact.html", {"request": request, "success": success})
