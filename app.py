@@ -32,6 +32,19 @@ def privacy_policy(request: Request):
 def terms_of_service(request: Request):
     return templates.TemplateResponse("terms-of-service.html", {"request": request})
 
+@app.get("/flats", response_class=HTMLResponse)
+def flats(request: Request):
+    return templates.TemplateResponse("flats.html", {"request": request})
+
+@app.get("/heels", response_class=HTMLResponse)
+def heels(request: Request):
+    return templates.TemplateResponse("heels.html", {"request": request})
+
+@app.get("/wedges", response_class=HTMLResponse)
+def wedges(request: Request):
+    return templates.TemplateResponse("wedges.html", {"request": request})
+
+
 @app.post("/contact", response_class=HTMLResponse)
 async def contact_form(request: Request, name: str = Form(...), email: str = Form(...), message: str = Form(...)):
     return templates.TemplateResponse("contact.html", {"request": request, "success": True})
