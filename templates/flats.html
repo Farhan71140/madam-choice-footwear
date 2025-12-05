@@ -3,41 +3,122 @@
 <h2 class="text-center mb-4">Flats Collection</h2>
 <div class="row">
 
- <!-- goldstripF -->
- <div class="col-md-3 text-center mb-4">
-   <img src="{{ url_for('static', path='/images/products/flats/goldstripF.jpg') }}" 
-        class="product-img" alt="goldstripF">
-   <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
-   <a href="https://wa.me/919133028638?text=I%20want%20to%20order%20goldstripF%20for%20₹320"
-      class="btn btn-success btn-sm mt-2">Order on WhatsApp</a>
- </div>
+  <!-- goldstripF -->
+  <div class="col-md-3 text-center mb-4">
+    <img src="{{ url_for('static', path='/images/products/flats/goldstripF.jpg') }}" 
+         class="product-img" alt="goldstripF">
+    <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
+    <button class="btn btn-outline-secondary btn-sm me-2" onclick="addToCart('goldstripF', 320)">Add to Cart</button>
+  </div>
 
- <!-- RisecreamF -->
- <div class="col-md-3 text-center mb-4">
-   <img src="{{ url_for('static', path='/images/products/flats/RisecreamF.jpg') }}" 
-        class="product-img" alt="RisecreamF">
-   <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
-   <a href="https://wa.me/919133028638?text=I%20want%20to%20order%20RisecreamF%20for%20₹320"
-      class="btn btn-success btn-sm mt-2">Order on WhatsApp</a>
- </div>
+  <!-- RisecreamF -->
+  <div class="col-md-3 text-center mb-4">
+    <img src="{{ url_for('static', path='/images/products/flats/RisecreamF.jpg') }}" 
+         class="product-img" alt="RisecreamF">
+    <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
+    <button class="btn btn-outline-secondary btn-sm me-2" onclick="addToCart('RisecreamF', 320)">Add to Cart</button>
+  </div>
 
- <!-- kalwaniblackF -->
- <div class="col-md-3 text-center mb-4">
-   <img src="{{ url_for('static', path='/images/products/flats/kalwaniblackF.jpg') }}" 
-        class="product-img" alt="kalwaniblackF">
-   <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
-   <a href="https://wa.me/919133028638?text=I%20want%20to%20order%20kalwaniblackF%20for%20₹320"
-      class="btn btn-success btn-sm mt-2">Order on WhatsApp</a>
- </div>
+  <!-- kalwaniblackF -->
+  <div class="col-md-3 text-center mb-4">
+    <img src="{{ url_for('static', path='/images/products/flats/kalwaniblackF.jpg') }}" 
+         class="product-img" alt="kalwaniblackF">
+    <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
+    <button class="btn btn-outline-secondary btn-sm me-2" onclick="addToCart('kalwaniblackF', 320)">Add to Cart</button>
+  </div>
 
- <!-- RisecreamBlackF (renamed from Risecream&BlackF) -->
- <div class="col-md-3 text-center mb-4">
-   <img src="{{ url_for('static', path='/images/products/flats/RisecreamBlackF.jpg') }}" 
-        class="product-img" alt="RisecreamBlackF">
-   <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
-   <a href="https://wa.me/919133028638?text=I%20want%20to%20order%20RisecreamBlackF%20for%20₹320"
-      class="btn btn-success btn-sm mt-2">Order on WhatsApp</a>
- </div>
+  <!-- RisecreamBlackF -->
+  <div class="col-md-3 text-center mb-4">
+    <img src="{{ url_for('static', path='/images/products/flats/RisecreamBlackF.jpg') }}" 
+         class="product-img" alt="RisecreamBlackF">
+    <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
+    <button class="btn btn-outline-secondary btn-sm me-2" onclick="addToCart('RisecreamBlackF', 320)">Add to Cart</button>
+  </div>
 
 </div>
+
+<!-- Cart Section -->
+<div class="container mt-5">
+  <h3 class="fw-bold">🛒 Your Cart</h3>
+  <ul id="cartItems" class="list-group mb-3"></ul>
+  <h5>Total: ₹<span id="cartTotal">0</span></h5>
+  <button class="btn btn-primary mt-3" onclick="checkoutCart()" id="checkoutBtn" disabled>Buy Now</button>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-3">
+      <h5 class="modal-title fw-bold">Complete Your Payment</h5>
+      <p>Total Amount: ₹<span id="paymentAmount"></span></p>
+
+      <div class="mb-3">
+        <p>Scan QR Code to Pay (Father’s UPI)</p>
+        <img src="{{ url_for('static', path='/images/payment-qr.png') }}" alt="QR Code" width="200" height="200">
+      </div>
+
+      <div class="mb-3">
+        <label for="upiRef" class="form-label">Enter UPI Reference ID</label>
+        <input type="text" id="upiRef" class="form-control" placeholder="e.g. 1234567890">
+      </div>
+
+      <div class="mb-3">
+        <label for="txnId" class="form-label">Enter Transaction ID</label>
+        <input type="text" id="txnId" class="form-control" placeholder="e.g. TXN123456">
+      </div>
+
+      <button class="btn btn-success mt-3" onclick="confirmCartPayment()">✅ I Have Paid</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(productName, price) {
+  cart.push({ name: productName, price: price });
+  updateCart();
+  alert(`${productName} added to cart!`);
+}
+
+function updateCart() {
+  const cartItems = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
+  cartItems.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item) => {
+    total += item.price;
+    cartItems.innerHTML += `<li class="list-group-item">${item.name} - ₹${item.price}</li>`;
+  });
+
+  cartTotal.innerText = total;
+  document.getElementById("checkoutBtn").disabled = cart.length === 0;
+}
+
+function checkoutCart() {
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  document.getElementById("paymentAmount").innerText = total;
+  const modal = new bootstrap.Modal(document.getElementById("paymentModal"));
+  modal.show();
+}
+
+function confirmCartPayment() {
+  const upiRef = document.getElementById("upiRef").value;
+  const txnId = document.getElementById("txnId").value;
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  if (!upiRef || !txnId) {
+    alert("Please enter UPI Reference ID and Transaction ID.");
+    return;
+  }
+
+  const productList = cart.map(item => `${item.name} (₹${item.price})`).join(", ");
+  const message = `Hello Madam Choice,\nI have paid ₹${total} for the following products:\n${productList}\nUPI Ref: ${upiRef}\nTransaction ID: ${txnId}\nPlease confirm my order.`;
+  const encoded = encodeURIComponent(message);
+
+  // ✅ Payment confirmation message goes to YOUR number
+  window.open(`https://wa.me/919133028638?text=${encoded}`, '_blank');
+}
+</script>
 {% endblock %}
