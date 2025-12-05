@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center">
+  <h2 class="fw-bold">Scan to Pay</h2>
+  <p>Order ID: <strong>{{ order.order_id }}</strong></p>
+  <p>Product: <strong>{{ order.product_name }}</strong></p>
+  <p>Amount: <strong>₹{{ order.expected_amount }}</strong></p>
+  <img src="/static/images/payment-qr.png" alt="QR Code" width="220" height="220" class="my-3">
+  <p>Pay via UPI to <strong>+91 9395550002</strong></p>
+
+  <button class="btn btn-success mt-3" onclick="confirmPaid('{{ order.order_id }}', '{{ order.product_name }}', {{ order.expected_amount }})">
+    ✅ I Have Paid
+  </button>
+
+  <p class="text-muted mt-2">After payment, click the button to notify us.</p>
+</div>
+{% endblock %}
