@@ -7,32 +7,62 @@
   <div class="col-md-3 text-center mb-4">
     <img src="{{ url_for('static', path='/images/products/flats/goldstripF.jpg') }}" 
          class="product-img" alt="goldstripF">
-    <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
-    <button class="btn btn-outline-secondary btn-sm me-2" onclick="addToCart('goldstripF', 320)">Add to Cart</button>
+    <!-- ✅ Price text changed to black -->
+    <p class="text-dark fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
+    <div class="d-flex justify-content-center flex-wrap">
+      <!-- ✅ Buttons changed to solid black -->
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('goldstripF', 320)">Add to Cart</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('goldstripF', 320, 1)">+1</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('goldstripF', 320, 2)">+2</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('goldstripF', 320, 3)">+3</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('goldstripF', 320, 4)">+4</button>
+      <button class="btn btn-dark btn-sm" onclick="addToCart('goldstripF', 320, 5)">+5</button>
+    </div>
   </div>
 
   <!-- RisecreamF -->
   <div class="col-md-3 text-center mb-4">
     <img src="{{ url_for('static', path='/images/products/flats/RisecreamF.jpg') }}" 
          class="product-img" alt="RisecreamF">
-    <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
-    <button class="btn btn-outline-secondary btn-sm me-2" onclick="addToCart('RisecreamF', 320)">Add to Cart</button>
+    <p class="text-dark fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
+    <div class="d-flex justify-content-center flex-wrap">
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamF', 320)">Add to Cart</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamF', 320, 1)">+1</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamF', 320, 2)">+2</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamF', 320, 3)">+3</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamF', 320, 4)">+4</button>
+      <button class="btn btn-dark btn-sm" onclick="addToCart('RisecreamF', 320, 5)">+5</button>
+    </div>
   </div>
 
   <!-- kalwaniblackF -->
   <div class="col-md-3 text-center mb-4">
     <img src="{{ url_for('static', path='/images/products/flats/kalwaniblackF.jpg') }}" 
          class="product-img" alt="kalwaniblackF">
-    <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
-    <button class="btn btn-outline-secondary btn-sm me-2" onclick="addToCart('kalwaniblackF', 320)">Add to Cart</button>
+    <p class="text-dark fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
+    <div class="d-flex justify-content-center flex-wrap">
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('kalwaniblackF', 320)">Add to Cart</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('kalwaniblackF', 320, 1)">+1</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('kalwaniblackF', 320, 2)">+2</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('kalwaniblackF', 320, 3)">+3</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('kalwaniblackF', 320, 4)">+4</button>
+      <button class="btn btn-dark btn-sm" onclick="addToCart('kalwaniblackF', 320, 5)">+5</button>
+    </div>
   </div>
 
   <!-- RisecreamBlackF -->
   <div class="col-md-3 text-center mb-4">
     <img src="{{ url_for('static', path='/images/products/flats/RisecreamBlackF.jpg') }}" 
          class="product-img" alt="RisecreamBlackF">
-    <p class="text-success fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
-    <button class="btn btn-outline-secondary btn-sm me-2" onclick="addToCart('RisecreamBlackF', 320)">Add to Cart</button>
+    <p class="text-dark fw-bold">₹320 <small class="text-muted">(Delivery ₹20/km)</small></p>
+    <div class="d-flex justify-content-center flex-wrap">
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamBlackF', 320)">Add to Cart</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamBlackF', 320, 1)">+1</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamBlackF', 320, 2)">+2</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamBlackF', 320, 3)">+3</button>
+      <button class="btn btn-dark btn-sm me-1" onclick="addToCart('RisecreamBlackF', 320, 4)">+4</button>
+      <button class="btn btn-dark btn-sm" onclick="addToCart('RisecreamBlackF', 320, 5)">+5</button>
+    </div>
   </div>
 
 </div>
@@ -72,53 +102,6 @@
   </div>
 </div>
 
-<script>
-let cart = [];
-
-function addToCart(productName, price) {
-  cart.push({ name: productName, price: price });
-  updateCart();
-  alert(`${productName} added to cart!`);
-}
-
-function updateCart() {
-  const cartItems = document.getElementById("cartItems");
-  const cartTotal = document.getElementById("cartTotal");
-  cartItems.innerHTML = "";
-  let total = 0;
-
-  cart.forEach((item) => {
-    total += item.price;
-    cartItems.innerHTML += `<li class="list-group-item">${item.name} - ₹${item.price}</li>`;
-  });
-
-  cartTotal.innerText = total;
-  document.getElementById("checkoutBtn").disabled = cart.length === 0;
-}
-
-function checkoutCart() {
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-  document.getElementById("paymentAmount").innerText = total;
-  const modal = new bootstrap.Modal(document.getElementById("paymentModal"));
-  modal.show();
-}
-
-function confirmCartPayment() {
-  const upiRef = document.getElementById("upiRef").value;
-  const txnId = document.getElementById("txnId").value;
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-
-  if (!upiRef || !txnId) {
-    alert("Please enter UPI Reference ID and Transaction ID.");
-    return;
-  }
-
-  const productList = cart.map(item => `${item.name} (₹${item.price})`).join(", ");
-  const message = `Hello Madam Choice,\nI have paid ₹${total} for the following products:\n${productList}\nUPI Ref: ${upiRef}\nTransaction ID: ${txnId}\nPlease confirm my order.`;
-  const encoded = encodeURIComponent(message);
-
-  // ✅ Payment confirmation message goes to YOUR number
-  window.open(`https://wa.me/919133028638?text=${encoded}`, '_blank');
-}
-</script>
+<!-- ✅ Link to shared cart.js -->
+<script src="{{ url_for('static', path='/js/cart.js') }}"></script>
 {% endblock %}
