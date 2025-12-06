@@ -1,0 +1,26 @@
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-3">
+      <h5 class="modal-title fw-bold">Complete Your Payment</h5>
+      <p>Total Amount: ₹<span id="paymentAmount"></span></p>
+
+      <div class="mb-3">
+        <p>Scan QR Code to Pay (Father’s UPI)</p>
+        <img src="{{ url_for('static', path='/images/payment-qr.png') }}" alt="QR Code" width="200" height="200">
+      </div>
+
+      <div class="mb-3">
+        <label for="upiRef" class="form-label">Enter UPI Reference ID</label>
+        <input type="text" id="upiRef" class="form-control" placeholder="e.g. 1234567890">
+      </div>
+
+      <div class="mb-3">
+        <label for="txnId" class="form-label">Enter Transaction ID</label>
+        <input type="text" id="txnId" class="form-control" placeholder="e.g. TXN123456">
+      </div>
+
+      <button class="btn btn-success mt-3" onclick="confirmCartPayment()">✅ I Have Paid</button>
+    </div>
+  </div>
+</div>
